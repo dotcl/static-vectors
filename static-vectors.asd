@@ -3,7 +3,7 @@
 #.(unless (or #+asdf3.1 (version<= "3.1" (asdf-version)))
     (error "You need ASDF >= 3.1 to load this system correctly."))
 
-#-(or abcl allegro clasp ccl cmu ecl lispworks sbcl)
+#-(or abcl allegro clasp ccl cmu dotcl ecl lispworks sbcl)
 (error "static-vectors does not support this Common Lisp implementation!")
 
 (defsystem :static-vectors
@@ -21,6 +21,7 @@
                (:file "impl-clasp" :if-feature :clasp)
                (:file "impl-clozure" :if-feature :ccl)
                (:file "impl-cmucl" :if-feature :cmu)
+               (:file "impl-dotcl" :if-feature :dotcl)
                (:file "impl-ecl" :if-feature :ecl)
                (:file "impl-lispworks" :if-feature :lispworks)
                (:file "impl-sbcl" :if-feature :sbcl)
